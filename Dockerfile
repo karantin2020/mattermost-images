@@ -1,6 +1,6 @@
 # Dockerfile for github.com/mattermost/mattermost-server
 
-FROM        golang:1.8.3-alpine3.6 as builder
+FROM        golang:1.9.0-alpine3.6 as builder
 
 ENV         GOPATH /go \
             MATTERMOST_VER=4.2.0
