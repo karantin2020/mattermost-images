@@ -1,0 +1,16 @@
+workspace:
+  base: /go
+  path: src/github.com/karantin2020/mattermost-images
+
+pipeline:
+  server:
+    image: golang:1.9.0-alpine3.6
+    commands:
+      - apk add --update git build-base
+      - go get -u -v -d github.com/mattermost/mattermost-server
+      - go get -u -v github.com/Masterminds/glide
+      - cd $GOPATH/src/github.com/mattermost/mattermost-server
+      - glide install
+      - make build-linux BUILD_NUMBER=4.2.0
+      - ls $GOPATH/bin
+      - $GOPATH/bin/mattermost-server -h
