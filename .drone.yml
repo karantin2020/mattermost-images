@@ -7,7 +7,7 @@ pipeline:
     image: golang:1.9.0-alpine3.6
     commands:
       - apk add --update git build-base
-      - go get -u -v -d github.com/mattermost/mattermost-server
+      - git clone --depth 1 --branch v4.2.0 https://github.com/mattermost/platform $GOPATH/src/github.com/mattermost/mattermost-server
       - go get -u -v github.com/Masterminds/glide
       - cd $GOPATH/src/github.com/mattermost/mattermost-server
       - glide install
